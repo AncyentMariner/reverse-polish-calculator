@@ -1,15 +1,16 @@
-const operators = ['+', '-', '/', '*']
+const calcs = require('./calculations/calculations')
+const input = process.stdin
+const output = process.stdout
 
-const operatorCheck = (char) => {
-    return operators.includes(char)
-}
+let numbers = []
 
-const runCalculations = () => {
-    console.log('thing')
-}
+const begin = (() => {
+    output.write('Welcome! Start calculating things! \n')
+})()
 
+input.on('data', (data) => {
+    let parsedData = calcs.isOperator(data) ? data : calcs.checkNumForFloats(data)
 
-module.exports = {
-    runCalculations,
-    operatorCheck
-}
+    numbers.push(`${parsedData} `)
+    output.write(`${numbers.toString().trim()} \n`)
+})
