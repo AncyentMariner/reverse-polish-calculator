@@ -33,11 +33,26 @@ stdin.on('data', (data) => {
             return
         }
 
-        calcs.runCalculations(numbers, data)
+        if (utils.isDividingByZero(numbers, data.trim())) {
+            stdout.write('You can\'t divide by zero, silly \n >')
+            return
+        }
+
+        calcs.runCalculations(numbers, data.trim())
     } else {
         numbers.push(data.trim())
     }
 
     stdout.write(`current number set: ${numbers.join(' ')}`)
     stdout.write('\n >')
+})
+
+process.on('SIGINT', () => {
+    quit()
+})
+
+process.on('uncaughtException', (err) => {
+    console.error((new Date).toUTCString() + ' uncaughtException:', err.message)
+    console.error(err.stack)
+    process.exit(1)
 })
