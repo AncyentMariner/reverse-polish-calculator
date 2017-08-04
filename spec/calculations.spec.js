@@ -1,37 +1,36 @@
 const calc = require('../calculations')
+const utils = require('../utils')
 
 describe("basic calculations", () => {
     it("adds two numbers correctly", () => {
-        const firstInput = 100;
-        const secondInput = 42;
-        const operator = '+';
+        const inputArray = [100, 42]
+        const operator = '+'
+        const result = calc.runCalculations(inputArray, operator)
 
-        const result = calc.runCalculations(firstInput, secondInput, operator);
-        return expect(result).toEqual(142);
+        return expect(result).toEqual([142])
     })
 
     it("subtracts two numbers correctly", () => {
-        const firstInput = 1;
-        const secondInput = 42;
-        const operator = '-';
+        const inputArray = [42, 43]
+        const operator = '-'
 
-        const result = calc.runCalculations(firstInput, secondInput, operator);
-        return expect(result).toEqual(41);
+        const result = calc.runCalculations(inputArray, operator)
+        return expect(result).toEqual([-1])
     })
 })
 
 describe("operator check", () => {
     it("correctly identifies mathematical operator", () => {
-        const operator = '-';
+        const operator = '-'
 
-        const check = calc.isOperator(operator);
-        return expect(check).toBeTruthy();
+        const check = utils.isOperator(operator)
+        return expect(check).toBeTruthy()
     })
 
     it("does not claim number is an operator", () => {
-        const number = 42;
+        const number = 42
 
-        const check = calc.isOperator(number);
-        return expect(check).toBeFalsy();
+        const check = utils.isOperator(number)
+        return expect(check).toBeFalsy()
     })
 })

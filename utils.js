@@ -11,13 +11,13 @@ const isLongEnough = (array) => {
 
 const isOperator = (char) => {
     const operators = ['+', '-', '/', '*']
-    const input = char.trim()
+    const input = char.toString().trim()
     return operators.includes(input)
 }
 
 const checkforValidInput = (data) => {
     const input = data.trim()
-    const inputRegex = new RegExp('([0-9|\+|\*|\.|\/|\-])+g')
+    const inputRegex = new RegExp('(^[0-9|\+|\*|\.|\/|\-])+$')
     return inputRegex.test(input)
 }
 
