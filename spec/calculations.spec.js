@@ -1,4 +1,4 @@
-const calc = require('../calculations/calculations')
+const calc = require('../calculations')
 
 describe("basic calculations", () => {
     it("adds two numbers correctly", () => {

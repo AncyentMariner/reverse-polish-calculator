@@ -1,4 +1,4 @@
-const calcs = require('./calculations/calculations')
+const calcs = require('./calculations')
 const utils = require('./utils')
 const stdin = process.stdin
 const stdout = process.stdout
@@ -19,26 +19,25 @@ const quit = () => {
     process.exit(0);
 }
 
-const isKillCode = (char) => {
-    const killArray = ['q', 'q!'];
-    const input = char.trim()
-
-    return killArray.includes(input)
-}
-
 stdin.on('data', (data) => {
-    if (isKillCode(data)) return quit()
+    if (utils.isKillCode(data)) return quit()
 
     if (!utils.checkforValidInput(data)) {
-        stdout.write('This is not a valid input \n')
+        stdout.write('This is not a valid input \n >')
         return
     }
 
-    // let parsedData = utils.isOperator(data) ? data : calcs.checkNumForFloats(data)
-    // numbers.push(parsedData)
-    numbers.push(data)
+    if (utils.isOperator(data)) {
+        if (!utils.isLongEnough(numbers)) {
+            stdout.write('You need at least two numbers to calculate \n >')
+            return
+        }
+
+        calcs.runCalculations(numbers, data)
+    } else {
+        numbers.push(data.trim())
+    }
 
     stdout.write(`current number set: ${numbers.join(' ')}`)
     stdout.write('\n >')
-
 })
