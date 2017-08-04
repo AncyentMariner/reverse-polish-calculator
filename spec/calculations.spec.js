@@ -20,19 +20,18 @@ describe("basic calculations", () => {
     })
 })
 
-
 describe("operator check", () => {
     it("correctly identifies mathematical operator", () => {
         const operator = '-';
 
-        const check = calc.operatorCheck(operator);
+        const check = calc.isOperator(operator);
         return expect(check).toBeTruthy();
     })
 
     it("does not claim number is an operator", () => {
         const number = 42;
 
-        const check = calc.operatorCheck(number);
+        const check = calc.isOperator(number);
         return expect(check).toBeFalsy();
     })
 })

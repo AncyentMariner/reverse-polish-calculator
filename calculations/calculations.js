@@ -1,20 +1,18 @@
 const operators = ['+', '-', '/', '*']
+const indexOfFirstNumToCalc = -1
+const indexOfSecondNumToCalc = -2
 
-const isOperator = (char) => {
-    return operators.includes(char)
-}
 
 const checkNumForFloats = (num) => {
-    console.log(num)
-    return num;
+    const input = num.trim();
+    return input;
 }
 
-const runCalculations = () => {
-    console.log('thing')
+const runCalculations = (calcArray, operator) => {
+    console.log(calcArray[indexOfFirstNumToCalc] + operator + calcArray[indexOfSecondNumToCalc])
 }
 
 module.exports = {
     runCalculations,
-    isOperator,
     checkNumForFloats
 }
