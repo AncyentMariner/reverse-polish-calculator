@@ -1,6 +1,13 @@
 # Reverse Polish calculator
-
 This is an implementation of a reverse polish calculator written in javascript(Node)
+
+## App Philosophy
+This is a simple cli application. It takes user input, gives them minimal, but effective feedback, and guides the user in the right direction.
+
+There is a utils file that takes care of the majority of error handling/ guidance for data flow. Most of these utils functions return a boolean, indicating that the input passed the function's check or not. These functions are designed to be composable, reusable, testable, and scalable -- all the good -ables. 
+
+## tradeoffs
+Choosing Node for this project gave me a lot of flexibilty and allowed me to write succinct, readable code, it comes with the tradeoff of doing math in javascript. Although modern incantations of Node has cleaned up js math significantly, you can expect to occasionally see numbers with many digits after the decimal (especially when dividing).
 
 ## Getting Started
 Follow the instructions below to install and run the application
@@ -12,7 +19,7 @@ $ git clone https://github.com/AncyentMariner/reverse-polish-calculator
 
 ## Go into the repository
 ```
-$ cd reverse-polish
+$ cd reverse-polish-calculator
 ```
 
 ## Install dependencies
@@ -46,8 +53,4 @@ Jeff Kingswood
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-Readme help from this awesome human's example: 
-https://gist.github.com/PurpleBooth/109311bb0361f32d87a2
 
