@@ -10,8 +10,8 @@ let numbers = []
 const begin = (() => {
     stdout.write(
         'Welcome! Start calculating things! \n \
-        Input one number or mathematical operator at a time \n \
-        to use the calculator \n >')
+        Input one number or mathematical operator at a time to use the calculator \n >'
+    )
 })()
 
 const quit = () => {
@@ -22,12 +22,12 @@ const quit = () => {
 stdin.on('data', (data) => {
     if (utils.isKillCode(data)) return quit()
 
-    if (!utils.checkforValidInput(data)) {
+    if (!utils.checkforValidInput(data.trim())) {
         stdout.write('This is not a valid input \n >')
         return
     }
 
-    if (utils.isOperator(data)) {
+    if (utils.isOperator(data.trim())) {
         if (!utils.isLongEnough(numbers)) {
             stdout.write('You need at least two numbers to calculate \n >')
             return
