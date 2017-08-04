@@ -1,4 +1,4 @@
-# Reverse Polish calculator
+# Reverse Polish Notation Calculator
 This is an implementation of a reverse polish calculator written in javascript (Node)
 
 ## App Philosophy
